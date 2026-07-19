@@ -35,7 +35,6 @@
     padding: 0 24px;
   }
 
-  /* HEADER */
   header {
     padding: 48px 0 8px;
     text-align: center;
@@ -67,7 +66,6 @@
     color: var(--gold);
   }
 
-  /* HERO */
   .hero {
     text-align: center;
     padding: 40px 0 8px;
@@ -98,7 +96,6 @@
     margin: 36px auto;
   }
 
-  /* CORE CONTENT — THE EXERCISE */
   .exercise-eyebrow {
     text-align: center;
     font-size: 0.8rem;
@@ -126,7 +123,6 @@
     font-size: 0.98rem;
   }
 
-  /* AT/IN/ON SUBSECTION */
   .why {
     margin-top: 44px;
   }
@@ -158,7 +154,6 @@
     font-size: 0.98rem;
   }
 
-  /* HOW TO PLAY */
   .how {
     max-width: 480px;
     margin: 36px auto 0;
@@ -184,7 +179,6 @@
     font-size: 0.95rem;
   }
 
-  /* WHAT'S INCLUDED */
   .included {
     margin: 44px 0 8px;
   }
@@ -234,7 +228,6 @@
     .cards { grid-template-columns: 1fr; }
   }
 
-  /* SCREENSHOTS */
   .shots {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -266,7 +259,6 @@
     .shots { grid-template-columns: 1fr; }
   }
 
-  /* TEASER — COMING SOON */
   .teaser {
     margin: 64px 0 8px;
   }
@@ -315,3 +307,209 @@
   .coming-soon-tag {
     position: absolute;
     top: 12px;
+    left: 12px;
+    background: var(--plum);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .teaser-card-body {
+    padding: 16px 18px 20px;
+  }
+
+  .teaser-card h3 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .teaser-card p {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 560px) {
+    .teaser-cards { grid-template-columns: 1fr; }
+  }
+
+  .cta {
+    text-align: center;
+    margin: 48px 0 64px;
+  }
+
+  .cta-top {
+    margin: 28px 0 8px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 8px 18px rgba(185, 134, 47, 0.28);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(185, 134, 47, 0.34);
+  }
+
+  .price-tag {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 48px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  footer a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 10px;
+  }
+
+  footer a:hover { color: var(--gold); }
+
+  .footer-corp {
+    margin-top: 14px;
+  }
+
+  .footer-corp a {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  .footer-corp a:hover { color: var(--gold); opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="brand"><img src="logo.png" alt="Zest English" style="max-width: 320px; width: 100%; height: auto;"></div>
+    <div class="brand-sub">Interactive games to master English</div>
+    <div class="tagline">Free at Last</div>
+  </header>
+
+  <div class="hero">
+    <img src="icon.png.jpg" alt="Jack and the Temple of Shadows game icon">
+    <p><strong>Jack and the Temple of Shadows</strong> is the way to be free at last — free from freezing mid-sentence, searching for the correct preposition. Everyone learning a new language knows the feeling. Master it, and it disappears — opening the door to real confidence and fluency.</p>
+  </div>
+
+  <div class="cta cta-top">
+    <a class="btn-primary" href="#" aria-label="Get Jack and the Temple of Shadows on Google Play">Get it on Google Play</a>
+    <span class="price-tag">€0.50 · One-time</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="exercise">
+    <div class="exercise-eyebrow">The Challenge</div>
+    <h2>100 gaps. One story. Every answer unambiguous.</h2>
+    <p class="lead">Jack's journey is built around 100 fill-in-the-gap moments, each with exactly one correct preposition — no trick questions, no guessing. You learn by doing, scene after scene, until the right word stops being a decision and starts being a reflex.</p>
+
+    <div class="why">
+      <div class="why-eyebrow">AT / IN / ON</div>
+      <h3>Three tiny words. Almost no rules. Endless mistakes — for all ages, from every country.</h3>
+      <p>AT, IN and ON don't follow a clean rulebook. Learners memorise lists, forget them by the next lesson, and keep saying "in Monday" or "at the kitchen." Prepositions are best learned through practice and repetition.</p>
+      <p>With Jack and the Temple of Shadows, it's a fun way to challenge yourself and help Jack complete his journey while you master the use of prepositions along the way.</p>
+    </div>
+
+    <div class="how">
+      <span>How to play</span>
+      <p>Tap the correct preposition — AT, IN, or ON — to fill in the gap and proceed.</p>
+    </div>
+
+    <div class="included">
+      <div class="cards">
+        <div class="card">
+          <h3>Level &amp; Age</h3>
+          <p>Built for EFL/ESL learners of all ages and levels — students, adults, business people, and anyone who wants to master English. No account needed.</p>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <p>Interface and support across these languages.</p>
+          <div class="lang-tags">
+            <span>Spanish</span><span>Chinese</span><span>Russian</span>
+            <span>Japanese</span><span>Hindi</span><span>German</span><span>French</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Format</h3>
+          <p>One story, one adventure, played in short sessions. No account, no subscription, no ads interrupting the journey.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="shots">
+      <figure>
+        <img src="screenshot 2.png" alt="Gameplay screenshot — filling in a gap">
+        <figcaption>Fill the gap as you go</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshot-scoreboard.png" alt="End of game scoreboard">
+        <figcaption>See your score</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="teaser">
+    <div class="teaser-eyebrow">Coming Soon</div>
+    <h2>The adventure continues</h2>
+    <div class="teaser-cards">
+      <div class="teaser-card">
+        <img src="coming soon.jpg" alt="Jack, Jia and Zafir's Quest — coming soon">
+        <span class="coming-soon-tag">Coming Soon</span>
+        <div class="teaser-card-body">
+          <h3>Jack, Jia &amp; Zafir's Quest</h3>
+          <p>Nine new prepositions of position — above, below, between, behind, over, near, close to, next to, and in front of — across 14 scenes and 100 gaps.</p>
+        </div>
+      </div>
+      <div class="teaser-card">
+        <img src="coming soon.jpg" alt="Game 3 — coming soon">
+        <span class="coming-soon-tag">Coming Soon</span>
+        <div class="teaser-card-body">
+          <h3>Game 3</h3>
+          <p>Everything from Games 1 and 2, reinforced and put to the test — plus a first taste of what's next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <a class="btn-primary" href="#" aria-label="Get Jack and the Temple of Shadows on Google Play">Get it on Google Play</a>
+    <span class="price-tag">€0.50 · One-time</span>
+  </div>
+
+  <footer>
+    <a href="#">Contact</a>
+    <a href="#">Google Play</a>
+    <div class="footer-corp"><a href="#">For academies &amp; businesses</a></div>
+  </footer>
+
+</div>
+
+</body>
+</html>
