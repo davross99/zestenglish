@@ -1,1 +1,281 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Zest English — Game 2 Preview: Paris</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; } .game-wrap { max-width: 900px; width: 100%; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); } .scene { position: relative; width: 100%; aspect-ratio: 16 / 9; background-image: url('paris-game2.png'); background-size: cover; background-position: center; } .scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0) 60%); } .sentence-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 24px 20px; z-index: 2; } .sentence { color: #fff; font-size: 1.35rem; font-weight: 600; text-shadow: 0 2px 6px rgba(0,0,0,0.8); margin-bottom: 14px; line-height: 1.4; } .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #ffd700; text-align: center; padding: 0 4px; } .blank.filled { color: #ffd700; } .boxes { display: flex; gap: 16px; justify-content: center; } .box { background: linear-gradient(145deg, #7b4bd6, #4a2c8f); border: 3px solid #ffd700; border-radius: 10px; color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 20px; cursor: pointer; box-shadow: 0 6px 14px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(255,255,255,0.15); transition: transform 0.15s ease, box-shadow 0.15s ease; min-width: 110px; text-align: center; } .box:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); } .box.correct { background: linear-gradient(145deg, #3fae5a, #276e39); animation: pop 0.4s ease; } .box.wrong { animation: shake 0.4s ease; background: linear-gradient(145deg, #c0392b, #7f1d13); } @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.12); } 100% { transform: scale(1); } } @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } } .footer { padding: 18px 24px; background: #f4f1fb; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; } .progress { display: flex; gap: 8px; } .dot { width: 12px; height: 12px; border-radius: 50%; background: #d8d0ee; } .dot.done { background: #7b4bd6; } .brand { font-weight: 700; color: #4a2c8f; font-size: 0.95rem; letter-spacing: 0.5px; } .complete-msg { display: none; text-align: center; padding: 40px 24px; } .complete-msg h2 { color: #4a2c8f; margin-bottom: 10px; } .complete-msg p { color: #555; } </style> </head> <body> <div class="game-wrap"> <div class="scene" id="scene"> <div class="sentence-bar"> <div class="sentence" id="sentence"></div> <div class="boxes" id="boxes"></div> </div> </div> <div class="complete-msg" id="completeMsg"> <h2>Nice work! 🎉</h2> <p>This is a short preview of Game 2 — the full adventure launches later this year.</p> </div> <div class="footer"> <div class="progress" id="progress"></div> <div class="brand">ZEST ENGLISH — Game 2 Preview</div> </div> </div> <script> const sentences = [ { before: "Jack and Jia are walking", after: "the river Seine.", answer: "next to", options: ["next to", "behind", "over"] }, { before: "The Eiffel Tower is", after: "them.", answer: "behind", options: ["behind", "under", "inside"] }, { before: "Look, Jack, the box is here", after: "the clocks.", answer: "between", options: ["between", "above", "below"] } ]; let current = 0; const sentenceEl = document.getElementById('sentence'); const boxesEl = document.getElementById('boxes'); const progressEl = document.getElementById('progress'); const sceneEl = document.getElementById('scene'); const completeMsg = document.getElementById('completeMsg'); function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); } function renderProgress() { progressEl.innerHTML = ''; sentences.forEach((_, i) => { const d = document.createElement('div'); d.className = 'dot' + (i < current ? ' done' : ''); progressEl.appendChild(d); }); } function renderSentence() { const s = sentences[current]; sentenceEl.innerHTML = `${s.before} <span class="blank" id="blankSpot">____</span> ${s.after}`; boxesEl.innerHTML = ''; shuffle(s.options).forEach(opt => { const box = document.createElement('div'); box.className = 'box'; box.textContent = opt; box.onclick = () => handleChoice(opt, box, s.answer); boxesEl.appendChild(box); }); renderProgress(); } function handleChoice(choice, boxEl, correctAnswer) { if (choice === correctAnswer) { boxEl.classList.add('correct'); document.getElementById('blankSpot').textContent = correctAnswer; document.getElementById('blankSpot').classList.add('filled'); // disable further clicks this round document.querySelectorAll('.box').forEach(b => b.style.pointerEvents = 'none'); setTimeout(() => { current++; if (current < sentences.length) { renderSentence(); } else { sceneEl.style.display = 'none'; completeMsg.style.display = 'block'; renderProgress(); } }, 900); } else { boxEl.classList.add('wrong'); setTimeout(() => boxEl.classList.remove('wrong'), 400); } } renderSentence(); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zest English — Game 2 Preview: Paris</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .game-wrap {
+    max-width: 900px;
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .scene {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-image: url('paris-game2.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .scene::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0) 60%);
+  }
+
+  .sentence-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 18px 24px 20px;
+    z-index: 2;
+  }
+
+  .sentence {
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  .blank {
+    display: inline-block;
+    min-width: 70px;
+    border-bottom: 3px solid #ffd700;
+    text-align: center;
+    padding: 0 4px;
+  }
+
+  .blank.filled {
+    color: #ffd700;
+  }
+
+  .boxes {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .box {
+    background: linear-gradient(145deg, #7b4bd6, #4a2c8f);
+    border: 3px solid #ffd700;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 20px;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(255,255,255,0.15);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-width: 110px;
+    text-align: center;
+  }
+
+  .box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  }
+
+  .box.correct {
+    background: linear-gradient(145deg, #3fae5a, #276e39);
+    animation: pop 0.4s ease;
+  }
+
+  .box.wrong {
+    animation: shake 0.4s ease;
+    background: linear-gradient(145deg, #c0392b, #7f1d13);
+  }
+
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+
+  .footer {
+    padding: 18px 24px;
+    background: #f4f1fb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .progress {
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d8d0ee;
+  }
+
+  .dot.done {
+    background: #7b4bd6;
+  }
+
+  .brand {
+    font-weight: 700;
+    color: #4a2c8f;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+
+  .complete-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .complete-msg h2 {
+    color: #4a2c8f;
+    margin-bottom: 10px;
+  }
+
+  .complete-msg p {
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<div class="game-wrap">
+  <div class="scene" id="scene">
+    <div class="sentence-bar">
+      <div class="sentence" id="sentence"></div>
+      <div class="boxes" id="boxes"></div>
+    </div>
+  </div>
+
+  <div class="complete-msg" id="completeMsg">
+    <h2>Nice work! 🎉</h2>
+    <p>This is a short preview of Game 2 — the full adventure launches later this year.</p>
+  </div>
+
+  <div class="footer">
+    <div class="progress" id="progress"></div>
+    <div class="brand">ZEST ENGLISH — Game 2 Preview</div>
+  </div>
+</div>
+
+<script>
+const sentences = [
+  {
+    before: "Jack and Jia are walking",
+    after: "the river Seine.",
+    answer: "next to",
+    options: ["next to", "behind", "over"]
+  },
+  {
+    before: "The Eiffel Tower is",
+    after: "them.",
+    answer: "behind",
+    options: ["behind", "under", "inside"]
+  },
+  {
+    before: "Look, Jack, the box is here",
+    after: "the clocks.",
+    answer: "between",
+    options: ["between", "above", "below"]
+  }
+];
+
+let current = 0;
+
+const sentenceEl = document.getElementById('sentence');
+const boxesEl = document.getElementById('boxes');
+const progressEl = document.getElementById('progress');
+const sceneEl = document.getElementById('scene');
+const completeMsg = document.getElementById('completeMsg');
+
+function shuffle(arr) {
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+function renderProgress() {
+  progressEl.innerHTML = '';
+  sentences.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i < current ? ' done' : '');
+    progressEl.appendChild(d);
+  });
+}
+
+function renderSentence() {
+  const s = sentences[current];
+  sentenceEl.innerHTML = `${s.before} <span class="blank" id="blankSpot">____</span> ${s.after}`;
+  boxesEl.innerHTML = '';
+
+  shuffle(s.options).forEach(opt => {
+    const box = document.createElement('div');
+    box.className = 'box';
+    box.textContent = opt;
+    box.onclick = () => handleChoice(opt, box, s.answer);
+    boxesEl.appendChild(box);
+  });
+
+  renderProgress();
+}
+
+function handleChoice(choice, boxEl, correctAnswer) {
+  if (choice === correctAnswer) {
+    boxEl.classList.add('correct');
+    document.getElementById('blankSpot').textContent = correctAnswer;
+    document.getElementById('blankSpot').classList.add('filled');
+
+    // disable further clicks this round
+    document.querySelectorAll('.box').forEach(b => b.style.pointerEvents = 'none');
+
+    setTimeout(() => {
+      current++;
+      if (current < sentences.length) {
+        renderSentence();
+      } else {
+        sceneEl.style.display = 'none';
+        completeMsg.style.display = 'block';
+        renderProgress();
+      }
+    }, 900);
+  } else {
+    boxEl.classList.add('wrong');
+    setTimeout(() => boxEl.classList.remove('wrong'), 400);
+  }
+}
+
+renderSentence();
+</script>
+
+</body>
+</html>
